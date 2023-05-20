@@ -6,7 +6,7 @@
 #    By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 16:15:16 by sechung           #+#    #+#              #
-#    Updated: 2023/05/21 03:42:39 by chanheki         ###   ########.fr        #
+#    Updated: 2023/05/21 04:07:27 by chanheki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ NAME		=	cub3D
 SRC_FILES	=	main.c
 
 SRC_FILES	+=	/utils/error.c \
-				/utils/program_validator.c
+				/utils/program_validator.c\
+				/utils/gnl/get_next_line_utils.c\
+				/utils/gnl/get_next_line.c
 
 SRC_FILES	+=	/executor/executor.c \
 				/executor/init/init_game_data.c \
