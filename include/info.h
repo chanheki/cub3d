@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   info.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/21 03:23:24 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/21 03:27:38 by chanheki         ###   ########.fr       */
+/*   Created: 2023/05/21 03:32:45 by chanheki          #+#    #+#             */
+/*   Updated: 2023/05/21 03:32:51 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#ifndef INFO_H
+# define INFO_H
 
-# include "cub3d.h"
-# include <stdio.h>
-# include <fcntl.h>
+typedef struct s_info
+{
+	char	*n_texpath;
+	char	*s_texpath;
+	char	*w_texpath;
+	char	*e_texpath;
 
-void	parser(t_info *info, char *path);
+	int		floor_color;
+	int		ceiling_color;
+
+	int		map_start_idx;
+	int		map_width;
+	int		map_height;
+	char	**map;
+
+	char	player_view;
+	int		player_x;
+	int		player_y;
+}			t_info;
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.c                                         :+:      :+:    :+:   */
+/*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:22:57 by sechung           #+#    #+#             */
-/*   Updated: 2023/05/20 20:19:15 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/21 03:44:35 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	calloc_data(t_data **data)
 	malloc_check(*data);
 }
 
-void	executer(t_info *info)
+void	executor(t_info *info)
 {
 	t_data	*data;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sechung <sechung@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:37:58 by sechung           #+#    #+#             */
-/*   Updated: 2023/05/13 18:03:09 by sechung          ###   ########.fr       */
+/*   Updated: 2023/05/21 03:45:38 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ typedef struct s_wall_info
 	int			tex_x;
 }				t_wall_info;
 
-void	executer(t_info *info);
+void	executor(t_info *info);
 void	init_game_data(t_data *data, t_info *info);
 void	init_texture(t_texture *texture, char *texture_path, void *mlx);
 int		game(t_data *data);
