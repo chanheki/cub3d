@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 01:06:03 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/21 01:06:05 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/21 02:57:46 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include "constant.h"
+# include "execute.h"
+# include "parse.h"
 
 typedef struct s_info
 {
@@ -37,8 +39,11 @@ typedef struct s_info
 	int		player_y;
 }				t_info;
 
+/* utils/error */
 void	exit_with_error(char *msg);
 void	malloc_check(void *value);
 void	null_check(void *value, char *msg);
 
+/* utils/program_validator */
+void	program_validator(int ac, char **av);
 #endif
