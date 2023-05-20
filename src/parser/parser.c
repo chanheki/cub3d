@@ -17,6 +17,16 @@ void	init_info(t_info *info)
 	info->player_y = 0;
 }
 
+int	file_open(char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		exit_with_error("File open");
+	return (fd);
+}
+
 void	parser(t_info *info, char *path)
 {
 	int	fd;
