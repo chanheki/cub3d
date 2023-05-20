@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constant.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sechung <sechung@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:37:24 by sechung           #+#    #+#             */
-/*   Updated: 2023/05/13 18:02:46 by sechung          ###   ########.fr       */
+/*   Updated: 2023/05/21 04:08:33 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef enum e_bool
 }	t_bool;
 
 # define STDERR 2
+# define BUFFER_SIZE 42
 
 # define GAME_HEIGHT 720
 # define GAME_WIDTH 1080

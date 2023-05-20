@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/21 01:06:03 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/21 04:21:23 by chanheki         ###   ########.fr       */
+/*   Created: 2022/10/24 20:22:04 by chanheki          #+#    #+#             */
+/*   Updated: 2023/05/21 04:08:49 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include "../libft/libft.h"
-# include "../mlx/mlx.h"
-# include "info.h"
+# include <unistd.h>
+# include <stdlib.h>
 # include "constant.h"
-# include "get_next_line.h"
-# include "execute.h"
-# include "parse.h"
 
-/* utils/error */
-void	exit_with_error(char *msg);
-void	malloc_check(void *value);
-void	null_check(void *value, char *msg);
+typedef enum e_line
+{
+	NO_NEW_LINE	= -1
+}t_line;
 
-/* utils/program_validator */
-void	program_validator(int ac, char **av);
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*get_next_line(int fd);
+char	*ft_strndup(const char *src, int start, int num);
+
 #endif
