@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:37:24 by sechung           #+#    #+#             */
-/*   Updated: 2023/05/21 04:08:33 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/26 20:29:27 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,8 @@ typedef enum e_bool
 # define LEFT 0
 # define R_LEFT 123
 # define R_RIGHT 124
+
+# define MAP_MAXHEIGHT 1000
+# define MAP_MAXWIDTH 1000
 
 #endif
