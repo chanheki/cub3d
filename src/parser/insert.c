@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:31:53 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 17:20:53 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:42:05 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	initialize_info(t_info *info)
 	info->s_texpath = NULL;
 	info->w_texpath = NULL;
 	info->e_texpath = NULL;
-	info->map = NULL;
 	info->floor_color = -1;
 	info->ceiling_color = -1;
 	info->map_start_idx = -1;
@@ -46,6 +45,7 @@ void	initialize_info(t_info *info)
 	info->player_view = 0;
 	info->player_x = 0;
 	info->player_y = 0;
+	initialize_map(info);
 }
 
 void	fill_in_map_information(char *line, t_info *info)
@@ -75,6 +75,7 @@ void	fill_in_map_information(char *line, t_info *info)
 		exit_with_error("Invalid information");
 	free(path);
 	free(key);
+	free(splited_value);
 }
 
 char	*map_newline_pushing(int fd)

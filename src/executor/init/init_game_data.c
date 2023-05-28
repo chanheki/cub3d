@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sechung <sechung@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:32:15 by sechung           #+#    #+#             */
-/*   Updated: 2023/05/13 17:44:40 by sechung          ###   ########.fr       */
+/*   Updated: 2023/05/28 18:24:09 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,16 @@ void	init_window(t_window *window)
 
 void	init_game_data(t_data *data, t_info *info)
 {
+	int i = 0;
+
 	init_ray(&data->ray, info);
 	init_window(&data->window);
 	init_textures(data, info);
-	data->map = info->map;
+	// data->map = info->map;
+	data->map = malloc(sizeof(char *) * MAP_MAXHEIGHT);
+	while (i < info->map_height)
+	{
+		data->map[i] = ft_strdup(info->map[i]);
+		i++;
+	}
 }

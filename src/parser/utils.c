@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:32:00 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 16:32:08 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:27:13 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,20 @@ int	ft_strlen_index(char *str)
 	return (i);
 }
 
-void	double_arr_dup(t_info *info)
+void	dup_map(t_info *info)
 {
 	int	i;
+	int	j;
 
-	info->visited = (char **)ft_calloc(sizeof(char *), MAP_MAXHEIGHT);
 	i = 0;
-	while (i < info->map_height)
+	while (i < MAP_MAXHEIGHT)
 	{
-		info->visited[i] = ft_strdup(info->map[i]);
+		j = 0;
+		while (j < MAP_MAXWIDTH)
+		{
+			info->visited[i][j] = info->map[i][j];
+			j++;
+		}
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 03:23:24 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 16:28:11 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:27:08 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void			map_board_parsing(int fd, t_info *info);
 void			free_double_arr(char **arr);
 int				file_open(char *path);
 int				ft_strlen_index(char *str);
-void			double_arr_dup(t_info *info);
+void			dup_map(t_info *info);
 unsigned int	rgb_to_hex(char *rgb);
 
 /* validator */
