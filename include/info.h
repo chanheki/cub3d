@@ -6,12 +6,14 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 03:32:45 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/27 20:21:00 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/28 17:26:40 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INFO_H
 # define INFO_H
+
+# include "constant.h"
 
 typedef struct s_info
 {
@@ -28,6 +30,8 @@ typedef struct s_info
 	int		map_height;
 	char	**map;
 	char	**visited;
+	// char	map[MAP_MAXHEIGHT][MAP_MAXWIDTH];
+	// char	visited[MAP_MAXHEIGHT][MAP_MAXWIDTH];
 
 	char	player_view;
 	int		player_x;
