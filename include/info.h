@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 03:32:45 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/21 03:32:51 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/27 20:21:00 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_info
 	int		map_width;
 	int		map_height;
 	char	**map;
+	char	**visited;
 
 	char	player_view;
 	int		player_x;

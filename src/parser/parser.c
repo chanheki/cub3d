@@ -205,6 +205,32 @@ char	*map_newline_pushing(int fd)
 	return (line);
 }
 
+void	double_arr_dup(t_info *info)
+{
+	int	i;
+
+	info->visited = (char **)ft_calloc(sizeof(char *), MAP_MAXHEIGHT);
+	i = 0;
+	while (i < info->map_height)
+	{
+		info->visited[i] = ft_strdup(info->map[i]);
+		i++;
+	}
+}
+
+void	map_components_validator(char *str)
+{
+	while (str && *str)
+	{
+		if (!(*str == '1' || *str == '0'
+				|| *str == 'N' || *str == 'E'
+				|| *str == 'W' || *str == 'S'
+				|| *str == ' ' || *str == '\n'))
+			exit_with_error("Invalid map components");
+		str++;
+	}
+}
+
 void	map_board_parsing(int fd, t_info *info)
 {
 	char	*line;
@@ -215,6 +241,7 @@ void	map_board_parsing(int fd, t_info *info)
 	info->map = (char **)ft_calloc(sizeof(char *), MAP_MAXHEIGHT);
 	while (1)
 	{
+		map_components_validator(line);
 		if (line == NULL)
 			break ;
 		else if (is_just_new_line(line))
@@ -230,13 +257,106 @@ void	map_board_parsing(int fd, t_info *info)
 		line = get_next_line(fd);
 	}
 	info->map_height = h;
+	double_arr_dup(info);
+}
+
+
+void	map_walled_off(int h, int w, t_info *info)
+{
+	if (info->map[h][w] == ' ' || info->map[h][w] == '\n')
+		exit_with_error("Not walled off");
+}
+
+void	player_position(int h, int w, t_info *info)
+{
+	if (info->map[h][w] == 'N' || info->map[h][w] == 'E'
+		|| info->map[h][w] == 'W' || info->map[h][w] == 'S')
+	{
+		printf("h:%d, w:%d [%c] \n", h, w, info->map[h][w]);
+		if (info->player_view != 0)
+			exit_with_error("Detecting Duplicate Players");
+		info->player_view = info->map[h][w];
+		info->visited[h][w] = '1';
+		info->player_x = w;
+		info->player_y = h;
+	}
+}
+
+int	map_dfs_checker(int i, int *h, int *w, t_info *info)
+{
+	const int	dx[4] = {0, 0, 1, -1};
+	const int	dy[4] = {1, -1, 0, 0};
+	int			nx;
+	int			ny;
+
+	nx = *(w) + dx[i];
+	ny = *(h) + dy[i];
+	printf(">> nx %d, ny %d \n", nx, ny);
+	if (nx >= 0 && ny >= 0 && ny < info->map_height
+		&& info->visited[ny][nx] != '1'
+		&& (info->map[ny][nx] != '1'))
+		// || info->map[ny][nx] == 'N' || info->map[ny][nx] == 'E'
+		// || info->map[ny][nx] == 'W' || info->map[ny][nx] == 'S'))
+	{
+		*h = ny;
+		*w = nx;
+		return (1);
+	}
+	return (0);
+}
+
+void	map_dfs(int h, int w, t_info *info)
+{
+	int			i;
+
+	i = 0;
+	map_walled_off(h, w, info);
+	player_position(h, w, info);
+	info->visited[h][w] = '1';
+	while (i < 4)
+	{
+		if (map_dfs_checker(i, &h, &w, info))
+			map_dfs(h, w, info);
+		i++;
+	}
+}
+
+void	map_visited_check(t_info *info)
+{
+	int	i;
+
+	i = 0;
+	while (i < info->map_height)
+	{
+		if (ft_strchr(info->visited[i], '0'))
+		{
+			printf("%s \n", info->visited[i]);
+			exit_with_error("There are still unprocessed zeros left.");
+		}
+		i++;
+	}
 }
 
 void	map_board_validator(t_info *info)
 {
-	info->player_view = 'W';
-	info->player_x = 12;
-	info->player_y = 6;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < info->map_height)
+	{
+		j = 0;
+		while (info->map[i][j] != '\n')
+		{
+			if (info->visited[i][j] != '1' && (info->map[i][j] == '0'
+			|| info->map[i][j] == 'N' || info->map[i][j] == 'E'
+			|| info->map[i][j] == 'W' || info->map[i][j] == 'S'))
+				map_dfs(i, j, info);
+			j++;
+		}
+		i++;
+	}
+	// map_visited_check(info);
 }
 
 void	show_map(t_info *info)
