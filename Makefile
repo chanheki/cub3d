@@ -6,7 +6,7 @@
 #    By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 16:15:16 by sechung           #+#    #+#              #
-#    Updated: 2023/05/21 04:07:27 by chanheki         ###   ########.fr        #
+#    Updated: 2023/05/28 19:31:50 by chanheki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,12 @@ SRC_FILES	+=	/executor/executor.c \
 				/executor/game/actions/mv_actions.c \
 				/executor/game/actions/rotate_actions.c
 
-SRC_FILES	+=	/parser/parser.c
+SRC_FILES	+=	/parser/checker.c \
+				/parser/dfs.c \
+				/parser/insert.c \
+				/parser/parser.c \
+				/parser/utils.c \
+				/parser/validator.c 
 
 SRC_DIR		=	src/
 
@@ -55,7 +60,7 @@ LIB_DIR		=	libft
 
 CC			=	cc
 
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -g3 # -fsanitize=address
 
 RESET		=	\033[0m
 BLACK		=	\033[30m
@@ -128,3 +133,6 @@ re:	fclean all
 
 
 .PHONY:	all clean fclean re
+
+t:
+	./cub3D maps/1.cub
