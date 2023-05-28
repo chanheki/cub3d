@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:32:03 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 16:33:23 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/28 20:01:01 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	map_board_validator(t_info *info)
 	int	j;
 
 	i = 0;
-	while (i < info->map_height)
+	while (i < info->map_height - 1)
 	{
 		j = 0;
 		while (info->map[i][j] != '\n')
