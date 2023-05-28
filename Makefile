@@ -6,7 +6,7 @@
 #    By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 16:15:16 by sechung           #+#    #+#              #
-#    Updated: 2023/05/28 19:31:50 by chanheki         ###   ########.fr        #
+#    Updated: 2023/05/28 20:38:41 by chanheki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,6 +133,3 @@ re:	fclean all
 
 
 .PHONY:	all clean fclean re
-
-t:
-	./cub3D maps/1.cub
