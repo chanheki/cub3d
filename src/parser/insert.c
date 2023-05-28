@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:31:53 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 19:42:05 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/28 22:01:12 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	fill_in_map_information(char *line, t_info *info)
 	splited_value = ft_split(line, ' ');
 	key = splited_value[0];
 	path = splited_value[1];
-	if (key == NULL || path == NULL)
-		exit_with_error("Invalid map informations");
+	if (key == NULL || path == NULL || check_double_len(splited_value) != 2)
+		exit_with_error("Invalid path informations");
 	else if (!ft_strcmp(key, "NO"))
 		check_file_access(&info->n_texpath, path);
 	else if (!ft_strcmp(key, "WE"))
@@ -68,14 +68,12 @@ void	fill_in_map_information(char *line, t_info *info)
 	else if (!ft_strcmp(key, "SO"))
 		check_file_access(&info->s_texpath, path);
 	else if (!ft_strcmp(key, "F"))
-		info->floor_color = rgb_to_hex(path);
+		rgb_to_hex(path, &info->floor_color);
 	else if (!ft_strcmp(key, "C"))
-		info->ceiling_color = rgb_to_hex(path);
+		rgb_to_hex(path, &info->ceiling_color);
 	else
 		exit_with_error("Invalid information");
-	free(path);
-	free(key);
-	free(splited_value);
+	free_double_arr(splited_value);
 }
 
 char	*map_newline_pushing(int fd)

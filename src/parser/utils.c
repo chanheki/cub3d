@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:32:00 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 18:27:13 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/28 21:57:21 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,21 @@ void	dup_map(t_info *info)
 	}
 }
 
-unsigned int	rgb_to_hex(char *rgb)
+void	rgb_to_hex(char *rgb, int *rgb_path)
 {
 	int				r;
 	int				g;
 	int				b;
 	char			**rgb_arr;
 
+	if (*rgb_path != -1)
+		exit_with_error("Duplicate RGB value");
+	check_rgb_validator(rgb);
 	rgb_arr = ft_split(rgb, ',');
 	r = ft_atoi(rgb_arr[0]);
 	g = ft_atoi(rgb_arr[1]);
 	b = ft_atoi(rgb_arr[2]);
 	rgb_validator(r, g, b, rgb_arr);
 	free_double_arr(rgb_arr);
-	return ((r << 16) + (g << 8) + b);
+	*rgb_path = ((r << 16) + (g << 8) + b);
 }

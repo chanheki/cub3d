@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:31:45 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 19:57:56 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/28 21:58:34 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_file_access(char **info_path, char *value)
 	int	end;
 
 	if (*info_path != NULL)
-		exit_with_error("Duplicate Check");
+		exit_with_error("Duplicate File Check");
 	*info_path = ft_strdup(value);
 	end = ft_strlen_index(*info_path);
 	info_path[0][end - 1] = '\0';
@@ -28,7 +28,7 @@ void	check_file_access(char **info_path, char *value)
 	close(fd);
 }
 
-int	check_rgb_len(char **arr)
+int	check_double_len(char **arr)
 {
 	int	i;
 
