@@ -6,11 +6,27 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:32:03 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/29 15:17:00 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 15:32:39 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+
+void	map_info_validator(t_info *info)
+{
+	if (info->n_texpath == NULL
+		|| info->s_texpath == NULL
+		|| info->w_texpath == NULL
+		|| info->e_texpath == NULL
+		|| info->floor_color == -1
+		|| info->ceiling_color == -1
+		|| info->map_width == 0
+		|| info->map_height == 0
+		|| info->player_view == 0
+		|| info->player_x == 0
+		|| info->player_y == 0)
+		exit_with_error("Value entry is not progressing");
+}
 
 void	map_components_validator(char *str)
 {
