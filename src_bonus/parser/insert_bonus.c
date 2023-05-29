@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert.c                                           :+:      :+:    :+:   */
+/*   insert_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:31:53 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/29 15:05:01 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:32:21 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,28 @@ void	initialize_info(t_info *info)
 	info->player_x = 0;
 	info->player_y = 0;
 	initialize_map(info);
+	info->s1 = NULL;
+	info->s2 = NULL;
+	info->door = NULL;
+}
+
+int	check_files(char *key, char *path, t_info *info)
+{
+	if (!ft_strcmp(key, "NO"))
+		return (check_file_access(&info->n_texpath, path), 1);
+	else if (!ft_strcmp(key, "WE"))
+		return (check_file_access(&info->w_texpath, path), 1);
+	else if (!ft_strcmp(key, "EA"))
+		return (check_file_access(&info->e_texpath, path), 1);
+	else if (!ft_strcmp(key, "SO"))
+		return (check_file_access(&info->s_texpath, path), 1);
+	else if (!ft_strcmp(key, "S1"))
+		return (check_file_access(&info->s1, path), 1);
+	else if (!ft_strcmp(key, "S2"))
+		return (check_file_access(&info->s2, path), 1);
+	else if (!ft_strcmp(key, "DO"))
+		return (check_file_access(&info->door, path), 1);
+	return (0);
 }
 
 void	fill_in_map_information(char *line, t_info *info)
@@ -58,20 +80,15 @@ void	fill_in_map_information(char *line, t_info *info)
 	path = splited_value[1];
 	if (key == NULL || path == NULL || check_double_len(splited_value) != 2)
 		exit_with_error("Invalid path informations");
-	else if (!ft_strcmp(key, "NO"))
-		check_file_access(&info->n_texpath, path);
-	else if (!ft_strcmp(key, "WE"))
-		check_file_access(&info->w_texpath, path);
-	else if (!ft_strcmp(key, "EA"))
-		check_file_access(&info->e_texpath, path);
-	else if (!ft_strcmp(key, "SO"))
-		check_file_access(&info->s_texpath, path);
 	else if (!ft_strcmp(key, "F"))
 		rgb_to_hex(path, &info->floor_color);
 	else if (!ft_strcmp(key, "C"))
 		rgb_to_hex(path, &info->ceiling_color);
 	else
-		exit_with_error("Invalid information");
+	{
+		if (!check_files(key, path, info))
+			exit_with_error("Invalid information");
+	}
 	free_double_arr(splited_value);
 }
 
