@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:37:58 by sechung           #+#    #+#             */
-/*   Updated: 2023/05/21 03:45:38 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:45:42 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ typedef struct s_data
 	t_textures	textures;
 	char		**map;
 	t_bool		press[256];
+	int			mini_ret;
+	int			x_size;
+	int			y_size;
+	int			mouse;
+	int			mouse_x;
+	int			mouse_y;
 }				t_data;
 
 typedef struct s_ray_info

@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/21 01:06:03 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/29 18:52:33 by chanheki         ###   ########.fr       */
+/*   Created: 2023/05/29 16:28:40 by chanheki          #+#    #+#             */
+/*   Updated: 2023/05/29 21:12:49 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef BONUS_H
+# define BONUS_H
 
-# include "../libft/libft.h"
-# include "../mlx/mlx.h"
-# include "constant.h"
-# include "info.h"
-# include "constant.h"
-# include "get_next_line.h"
 # include "execute.h"
-# include "parse.h"
 
-/* utils/error */
-void	exit_with_error(char *msg);
-void	malloc_check(void *value);
-void	null_check(void *value, char *msg);
-
-/* utils/program_validator */
-void	program_validator(int ac, char **av);
+void	draw_minimap(t_data *cub3d);
+void	my_pixel_put(t_img *img, int x, int y, int color);
+void	get_ret(t_data **data);
+void	mouse_hook(t_data *cub3d);
+void	move_mouse(t_data *cub3d);
 #endif

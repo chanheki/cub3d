@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:37:24 by sechung           #+#    #+#             */
-/*   Updated: 2023/05/26 20:29:27 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:51:30 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ typedef enum e_bool
 # define GAME_HEIGHT 720
 # define GAME_WIDTH 1080
 
-# define WALL 1
-
 # define MOVE_SPEED 0.015
 # define ROT_SPEED 0.015
 
@@ -41,8 +39,16 @@ typedef enum e_bool
 # define LEFT 0
 # define R_LEFT 123
 # define R_RIGHT 124
+# define KEY_DOOR 49
+# define KEY_ONE 18
 
 # define MAP_MAXHEIGHT 1000
 # define MAP_MAXWIDTH 1000
+
+/* bonus */
+# define AREA	'0'
+# define WALL	'1'
+# define ENEMY	'2'
+# define DOOR	'3'
 
 #endif
