@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:32:03 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 21:58:34 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 15:17:00 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,6 @@ void	map_components_validator(char *str)
 			exit_with_error("Invalid map components");
 		str++;
 	}
-}
-
-void	check_rgb_validator(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str || str[i])
-	{
-		if (!(str[i] >= '0' && str[i] <= '9') && str[i] != ',')
-			break ;
-		i++;
-	}
-	if (str[i] != '\n')
-		exit_with_error("Incoming non-numeric values");
-}
-
-void	rgb_validator(int r, int g, int b, char **rgb_arr)
-{
-	int	i;
-
-	i = -1;
-	if (check_double_len(rgb_arr) != 3)
-		exit_with_error("num of RGB value is not valid");
-	if (ft_strlen(rgb_arr[0]) > 3 || ft_strlen(rgb_arr[1]) > 3
-		|| ft_strlen(rgb_arr[2]) > 4)
-		exit_with_error("RGB value is not valid");
-	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-		exit_with_error("RGB value is not valid");
 }
 
 void	map_parsing_validator(int fd, t_info *info)

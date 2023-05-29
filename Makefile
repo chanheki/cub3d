@@ -6,7 +6,7 @@
 #    By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 16:15:16 by sechung           #+#    #+#              #
-#    Updated: 2023/05/28 20:38:41 by chanheki         ###   ########.fr        #
+#    Updated: 2023/05/29 15:27:28 by chanheki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC_FILES	+=	/parser/checker.c \
 				/parser/dfs.c \
 				/parser/insert.c \
 				/parser/parser.c \
+				/parser/rgb.c \
 				/parser/utils.c \
 				/parser/validator.c 
 
@@ -60,7 +61,7 @@ LIB_DIR		=	libft
 
 CC			=	cc
 
-CFLAGS		=	-Wall -Wextra -Werror -g3 # -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
 RESET		=	\033[0m
 BLACK		=	\033[30m
