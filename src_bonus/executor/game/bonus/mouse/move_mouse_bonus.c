@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 19:43:55 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/29 21:16:37 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 22:00:24 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	move_mouse(t_data *cub3d)
 		mlx_mouse_move(cub3d->window.win, GAME_WIDTH / 2, GAME_HEIGHT / 2);
 		while (abs_x > 0)
 		{
-			printf("%d \n", abs_x);
 			if (!dir)
 				rotate_left(cub3d);
 			else

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:31:45 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 21:58:34 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 22:00:33 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,7 @@ void	map_visited_check(t_info *info)
 	while (i < info->map_height)
 	{
 		if (ft_strchr(info->visited[i], '0'))
-		{
-			printf("%s \n", info->visited[i]);
 			exit_with_error("There are still unprocessed zeros left.");
-		}
 		i++;
 	}
 }

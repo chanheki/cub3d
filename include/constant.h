@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:37:24 by sechung           #+#    #+#             */
-/*   Updated: 2023/05/29 19:51:30 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 22:10:09 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,9 @@ typedef enum e_bool
 # define WALL	'1'
 # define ENEMY	'2'
 # define DOOR	'3'
+# define W		'W'
+# define S		'S'
+# define E		'E'
+# define D		'D'
 
 #endif
