@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:31:24 by sechung           #+#    #+#             */
-/*   Updated: 2023/05/17 22:01:05 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 21:14:22 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
+#include "bonus.h"
 
 void	floor_ceiling(t_window *window, t_textures textures)
 {
@@ -34,7 +35,7 @@ void	floor_ceiling(t_window *window, t_textures textures)
 	}
 }
 
-void	draw_window(t_window window)
+void	draw_window(t_data *data)
 {
 	int	i;
 	int	j;
@@ -45,13 +46,15 @@ void	draw_window(t_window window)
 	{
 		while (j < GAME_WIDTH)
 		{
-			window.img.data[i * GAME_WIDTH + j] = window.buf[i][j];
+			data->window.img.data[i * GAME_WIDTH + j] = data->window.buf[i][j];
 			j++;
 		}
 		i++;
 		j = 0;
 	}
-	mlx_put_image_to_window(window.mlx, window.win, window.img.img, 0, 0);
+	draw_minimap(data);
+	mlx_put_image_to_window(data->window.mlx, data->window.win, \
+						data->window.img.img, 0, 0);
 }
 
 void	correction_position(t_ray *ray)
@@ -69,9 +72,11 @@ void	correction_position(t_ray *ray)
 int	game(t_data *data)
 {
 	actions(data);
+	if (data->mouse == 1)
+		move_mouse(data);
 	correction_position(&data->ray);
 	floor_ceiling(&data->window, data->textures);
 	raycasting(data);
-	draw_window(data->window);
+	draw_window(data);
 	return (0);
 }
