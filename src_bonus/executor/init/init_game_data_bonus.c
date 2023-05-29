@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game_data.c                                   :+:      :+:    :+:   */
+/*   init_game_data_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:32:15 by sechung           #+#    #+#             */
-/*   Updated: 2023/05/29 15:12:59 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:54:20 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
+#include "bonus.h"
 
 void	dir_and_plane_setting(t_ray *ray, char player_view)
 {
@@ -83,4 +84,10 @@ void	init_game_data(t_data *data, t_info *info)
 		data->map[i] = ft_strdup(info->map[i]);
 		i++;
 	}
+	data->x_size = info->map_width;
+	data->y_size = info->map_height;
+	get_ret(&data);
+	data->mouse = -1;
+	data->mouse_x = 0;
+	data->mouse_y = 0;
 }
