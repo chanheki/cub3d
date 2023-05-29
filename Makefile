@@ -6,48 +6,73 @@
 #    By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 16:15:16 by sechung           #+#    #+#              #
-#    Updated: 2023/05/29 15:27:28 by chanheki         ###   ########.fr        #
+#    Updated: 2023/05/29 16:16:14 by chanheki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	cub3D
 
-SRC_FILES	=	main.c
+# ----- MANDATORY ----- #
+SRC_FILES	=	src/main.c
 
-SRC_FILES	+=	/utils/error.c \
-				/utils/program_validator.c\
-				/utils/gnl/get_next_line_utils.c\
-				/utils/gnl/get_next_line.c
+SRC_FILES	+=	src/utils/error.c \
+				src/utils/program_validator.c\
+				src/utils/gnl/get_next_line_utils.c\
+				src/utils/gnl/get_next_line.c
 
-SRC_FILES	+=	/executor/executor.c \
-				/executor/init/init_game_data.c \
-				/executor/init/init_texture.c \
-				/executor/game/game.c \
-				/executor/game/raycasting/raycasting.c \
-				/executor/game/raycasting/dda_init.c \
-				/executor/game/raycasting/set_wall_buffer.c \
-				/executor/react/finish_game.c \
-				/executor/react/press_events.c \
-				/executor/react/release_events.c \
-				/executor/game/actions/actions.c \
-				/executor/game/actions/mv_actions.c \
-				/executor/game/actions/rotate_actions.c
+SRC_FILES	+=	src/executor/executor.c \
+				src/executor/init/init_game_data.c \
+				src/executor/init/init_texture.c \
+				src/executor/game/game.c \
+				src/executor/game/raycasting/raycasting.c \
+				src/executor/game/raycasting/dda_init.c \
+				src/executor/game/raycasting/set_wall_buffer.c \
+				src/executor/react/finish_game.c \
+				src/executor/react/press_events.c \
+				src/executor/react/release_events.c \
+				src/executor/game/actions/actions.c \
+				src/executor/game/actions/mv_actions.c \
+				src/executor/game/actions/rotate_actions.c
 
-SRC_FILES	+=	/parser/checker.c \
-				/parser/dfs.c \
-				/parser/insert.c \
-				/parser/parser.c \
-				/parser/rgb.c \
-				/parser/utils.c \
-				/parser/validator.c 
+SRC_FILES	+=	src/parser/checker.c \
+				src/parser/dfs.c \
+				src/parser/insert.c \
+				src/parser/parser.c \
+				src/parser/rgb.c \
+				src/parser/utils.c \
+				src/parser/validator.c 
 
-SRC_DIR		=	src/
+# ----- BONUS ----- #
+BONUS_FILES	=	src_bonus/main_bonus.c
 
-SCRS		=	$(addprefix $(SRC_DIR), $(SRC_FILES))
+BONUS_FILES	+=	src_bonus/utils/error_bonus.c \
+				src_bonus/utils/program_validator_bonus.c\
+				src_bonus/utils/gnl/get_next_line_utils_bonus.c\
+				src_bonus/utils/gnl/get_next_line_bonus.c
+
+BONUS_FILES	+=	src_bonus/executor/executor_bonus.c \
+				src_bonus/executor/init/init_game_data_bonus.c \
+				src_bonus/executor/init/init_texture_bonus.c \
+				src_bonus/executor/game/game_bonus.c \
+				src_bonus/executor/game/raycasting/raycasting_bonus.c \
+				src_bonus/executor/game/raycasting/dda_init_bonus.c \
+				src_bonus/executor/game/raycasting/set_wall_buffer_bonus.c \
+				src_bonus/executor/react/finish_game_bonus.c \
+				src_bonus/executor/react/press_events_bonus.c \
+				src_bonus/executor/react/release_events_bonus.c \
+				src_bonus/executor/game/actions/actions_bonus.c \
+				src_bonus/executor/game/actions/mv_actions_bonus.c \
+				src_bonus/executor/game/actions/rotate_actions_bonus.c
+				
+BONUS_FILES	+=	src_bonus/parser/checker_bonus.c \
+				src_bonus/parser/dfs_bonus.c \
+				src_bonus/parser/insert_bonus.c \
+				src_bonus/parser/parser_bonus.c \
+				src_bonus/parser/rgb_bonus.c \
+				src_bonus/parser/utils_bonus.c \
+				src_bonus/parser/validator_bonus.c 
 
 OBJ_DIR		=	obj/
-
-OBJS		=	$(addprefix $(OBJ_DIR), $(patsubst %.c,%.o,$(SRC_FILES)))
 
 MLX			=	mlx/libmlx.a
 
@@ -58,6 +83,8 @@ MLX_FLAGS	=	-framework OpenGL -framework Appkit
 LIBFT 		= 	libft/libft.a
 
 LIB_DIR		=	libft
+
+INCS		=	include
 
 CC			=	cc
 
@@ -75,11 +102,27 @@ WHITE		=	\033[37m
 UP			=	\033[A
 CUT			=	\033[K
 
+ALL_SOURCES = $(SRC_FILES) $(BONUS_FILES)
+
+OBJECTS1 = $(SRC_FILES:.c=.o)
+OBJECTS2 = $(BONUS_FILES:.c=.o)
+ALL_OBJECTS = $(SRC_FILES) $(BONUS_FILES)
+
+define OBJECTS_GOAL
+$(addprefix $(OBJ_DIR)/, $(call $(if $(filter bonus, $(MAKECMDGOALS)), OBJECTS2, OBJECTS1))) 
+endef
+
+define REACT
+$(if $(filter bonus, $(MAKECMDGOALS)), bonus, all)
+endef
+
+.PHONY : all bonus clean fclean re
+
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MLX) $(LIBFT)
+$(NAME) : $(OBJECTS_GOAL) $(MLX) $(LIBFT)
 	@echo "$(CYAN)Compiling...        [$(NAME)]$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(MLX_DIR) -lmlx $(MLX_FLAGS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJECTS_GOAL) -o $(NAME) -L$(MLX_DIR) -lmlx $(MLX_FLAGS) $(LIBFT)
 	@echo "$(GREEN)Make success!       [$(NAME)]$(RESET)"
 
 	@printf "\n"
@@ -92,11 +135,12 @@ $(NAME): $(OBJS) $(MLX) $(LIBFT)
 	@printf "\n"
 
 
-$(OBJ_DIR)%.o:$(SRC_DIR)%.c
-	@mkdir -p $(dir $@)
+$(OBJ_DIR)/%.o: %.c
+	@#mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/$(dir $^)
 	@echo "$(CYAN)Compiling...        [$@]$(RESET)"
 	@printf "$(UP)$(CUT)"
-	@$(CC) $(CFLAGS) -I include -o $@ -c $<
+	@$(CC) $(CFLAGS) -c $^ -o $@ -I$(INCS)
 
 
 $(MLX) :
@@ -109,6 +153,7 @@ $(LIBFT) :
 	@echo "$(CYAN)Compiling...        [libft]$(RESET)"
 	@make -s -C $(LIB_DIR)
 
+bonus : $(NAME)
 
 clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \
@@ -130,7 +175,5 @@ fclean: clean
 	fi;
 
 
-re:	fclean all
-
-
-.PHONY:	all clean fclean re
+re : fclean
+	@make $(react)
