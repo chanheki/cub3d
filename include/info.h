@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 03:32:45 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 18:02:17 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 15:04:58 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_info
 	int		floor_color;
 	int		ceiling_color;
 
-	int		map_start_idx;
 	int		map_width;
 	int		map_height;
 	char	map[MAP_MAXHEIGHT][MAP_MAXWIDTH];

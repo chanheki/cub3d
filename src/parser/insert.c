@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:31:53 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 22:01:12 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 15:05:01 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	initialize_info(t_info *info)
 	info->e_texpath = NULL;
 	info->floor_color = -1;
 	info->ceiling_color = -1;
-	info->map_start_idx = -1;
 	info->map_width = 0;
 	info->map_height = 0;
 	info->player_view = 0;

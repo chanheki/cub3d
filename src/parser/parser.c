@@ -6,7 +6,7 @@
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:31:56 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/28 19:54:37 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 15:17:10 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	line_to_map(int *h, char *line, t_info *info)
 	*(h) += 1;
 	if (*(h) > MAP_MAXHEIGHT)
 		exit_with_error("Map size is too large");
+	if (info->map_width < w)
+		info->map_width = w;
 }
 
 void	map_board_parsing(int fd, t_info *info)
@@ -57,6 +59,22 @@ void	map_board_parsing(int fd, t_info *info)
 	dup_map(info);
 }
 
+void	map_info_validator(t_info *info)
+{
+	if (info->n_texpath == NULL
+		|| info->s_texpath == NULL
+		|| info->w_texpath == NULL
+		|| info->e_texpath == NULL
+		|| info->floor_color == -1
+		|| info->ceiling_color == -1
+		|| info->map_width == 0
+		|| info->map_height == 0
+		|| info->player_view == 0
+		|| info->player_x == 0
+		|| info->player_y == 0)
+		exit_with_error("Value entry is not progressing");
+}
+
 void	parser(t_info *info, char *path)
 {
 	int	fd;
@@ -67,4 +85,5 @@ void	parser(t_info *info, char *path)
 	map_board_parsing(fd, info);
 	close (fd);
 	map_board_validator(info);
+	map_info_validator(info);
 }
