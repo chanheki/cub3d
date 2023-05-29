@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actions.c                                          :+:      :+:    :+:   */
+/*   actions_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sechung <sechung@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:21:43 by sechung           #+#    #+#             */
-/*   Updated: 2023/05/13 17:22:09 by sechung          ###   ########.fr       */
+/*   Updated: 2023/05/29 21:13:33 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
+#include "constant.h"
+#include "bonus.h"
 
 void	default_action(t_data *data)
 {
@@ -50,6 +52,7 @@ void	init_actions(void (*events[])(t_data*))
 	events[LEFT] = left_action;
 	events[R_LEFT] = rotate_left;
 	events[R_RIGHT] = rotate_right;
+	events[KEY_ONE] = mouse_hook;
 }
 
 int	actions(t_data *data)
