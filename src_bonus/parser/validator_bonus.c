@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validator.c                                        :+:      :+:    :+:   */
+/*   validator_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:32:03 by chanheki          #+#    #+#             */
-/*   Updated: 2023/05/29 15:32:39 by chanheki         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:40:30 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	map_components_validator(char *str)
 		if (!(*str == '1' || *str == '0'
 				|| *str == 'N' || *str == 'E'
 				|| *str == 'W' || *str == 'S'
+				|| *str == '2' || *str == '3'
 				|| *str == ' ' || *str == '\n'))
 			exit_with_error("Invalid map components");
 		str++;
