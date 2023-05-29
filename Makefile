@@ -6,7 +6,7 @@
 #    By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 16:15:16 by sechung           #+#    #+#              #
-#    Updated: 2023/05/29 16:16:14 by chanheki         ###   ########.fr        #
+#    Updated: 2023/05/29 21:26:16 by chanheki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,8 +62,12 @@ BONUS_FILES	+=	src_bonus/executor/executor_bonus.c \
 				src_bonus/executor/react/release_events_bonus.c \
 				src_bonus/executor/game/actions/actions_bonus.c \
 				src_bonus/executor/game/actions/mv_actions_bonus.c \
-				src_bonus/executor/game/actions/rotate_actions_bonus.c
-				
+				src_bonus/executor/game/actions/rotate_actions_bonus.c\
+				\
+				src_bonus/executor/game/bonus/minimap/draw_minimap_bonus.c\
+				src_bonus/executor/game/bonus/mouse/move_mouse_bonus.c\
+				src_bonus/executor/game/bonus/util.c\
+
 BONUS_FILES	+=	src_bonus/parser/checker_bonus.c \
 				src_bonus/parser/dfs_bonus.c \
 				src_bonus/parser/insert_bonus.c \
