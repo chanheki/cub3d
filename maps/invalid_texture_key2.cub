@@ -1,6 +1,6 @@
-NO ../textures/_NO.xpm
-SO ../textures/_SO.xpm
-WE ../textures/_WE.xpm
+NO ./textures/_NO.xpm
+SO ./textures/_SO.xpm
+WE ./textures/_WE.xpm
 EA ./textures/brick-texture-png-23887.png
 
 C 115,215,225
